@@ -15,7 +15,7 @@
   <p id="decodedIDToken"><b>email:</b> </p>
   
   <button onclick="openWindow()">สั่งซื้อสินค้า</button>
-  <button id="btnCloseProduct" onclick="closed()">สอบถามเกี่ยวกับผลิตภัณฑ์</button>
+  <button id="btnCloseProduct" onclick="sendMsgProd()">สอบถามเกี่ยวกับผลิตภัณฑ์</button>
   <button id="btnMsg" onclick="sendMsgAgent()">ติดต่อเจ้าหน้าที่</button>
   <button id="btnCloseAgent" onclick="closed()">Close</button>
 
@@ -62,6 +62,18 @@
           }
         ])
         alert("เจ้าหน้าที่จะรีบติดต่อกลับไปอย่างเร็วที่สุดค่ะ")
+      }
+    }
+    
+        async function sendMsgProd() {
+      if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
+        await liff.sendMessages([
+          {
+            type: "text",
+            text: "สอบถามเกี่ยวกับผลิตภัณฑ์"
+          }
+        ])
+        alert("ขอบคุณที่สนใจผลิตภัณฑ์ของเรา เจ้าหน้าที่จะรีบติดต่อกลับไปอย่างเร็วที่สุดค่ะ")
       }
     }
 
