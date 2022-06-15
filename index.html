@@ -56,8 +56,8 @@
       if (liff.getContext().type !== "none") {
         await liff.sendMessages([
           {
-            type: "text",
-            text: "ติดต่อเจ้าหน้าที่"
+            "type": "text",
+            "text": "ติดต่อเจ้าหน้าที่"
           }
         ])
         alert("เจ้าหน้าที่จะรีบติดต่อกลับไปอย่างเร็วที่สุดค่ะ")
@@ -68,8 +68,8 @@
       if (liff.getContext().type !== "none") {
         await liff.sendMessages([
           {
-            type: "text",
-            text: "สอบถามเกี่ยวกับผลิตภัณฑ์"
+            "type": "text",
+            "text": "สอบถามเกี่ยวกับผลิตภัณฑ์"
           }
         ])
         alert("ขอบคุณที่สนใจผลิตภัณฑ์ของเรา เจ้าหน้าที่จะรีบติดต่อกลับไปอย่างเร็วที่สุดค่ะ")
@@ -92,7 +92,6 @@
     }
 
     async function main() {
-      //alert("Welcome to Unilever Food Solutions")
       await liff.init({ liffId:"1657220874-OGNZv0o7" })
       // getEnvironment()
       getUserProfile()
