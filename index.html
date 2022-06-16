@@ -75,7 +75,10 @@
     }
     
     async function main() {
-      liff.ready.then (() => {getUserProfile()}
+      liff.ready.then (() => {
+        getUserProfile()
+        getContext()
+      }
       await liff.init({ liffId: "1657220874-OGNZv0o7" })
     }
     main()
