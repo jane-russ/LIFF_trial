@@ -28,7 +28,8 @@
       external: true
       })
     }
-async function sendMsgProd() {
+    
+    async function sendMsgProd() {
       if (liff.getContext().type !== "none") {
       await liff.sendMessages([
           {
@@ -55,6 +56,14 @@ async function sendMsgProd() {
     function closed() {
       liff.closeWindow()
     }
+    
+    function getContext() {
+      document.getElementById("type").append(liff.getContext().type)
+      document.getElementById("viewType").append(liff.getContext().viewType)
+      document.getElementById("utouId").append(liff.getContext().utouId)
+      document.getElementById("roomId").append(liff.getContext().roomId)
+      document.getElementById("groupId").append(liff.getContext().groupId)
+    }
 
     async function getUserProfile() {
       const profile = await liff.getProfile()
@@ -64,6 +73,7 @@ async function sendMsgProd() {
       document.getElementById("displayName").append(profile.displayName)
       document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
     }
+    
     async function main() {
       liff.ready.then (() => {getUserProfile()}
       await liff.init({ liffId: "1657220874-OGNZv0o7" })
