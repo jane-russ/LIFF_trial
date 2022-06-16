@@ -14,9 +14,48 @@
   <p id="displayName"><b>displayName:</b> </p>
   <p id="statusMessage"><b>statusMessage:</b> </p>
   <p id="decodedIDToken"><b>email:</b> </p>
+  
+  <button onclick="openWindow()">สั่งซื้อสินค้า</button>
+  <button id="btnCloseProduct" onclick="sendMsgProd()">สอบถามเกี่ยวกับผลิตภัณฑ์</button>
+  <button id="btnMsg" onclick="sendMsgAgent()">ติดต่อเจ้าหน้าที่</button>
+  <button id="btnCloseAgent" onclick="closed()">Close</button>
 
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script>
+    function openWindow() {
+      liff.openWindow({
+      url: "https://developers.line.biz/en/"
+      external: true
+      })
+    }
+async function sendMsgProd() {
+      if (liff.getContext().type !== "none") {
+      await liff.sendMessages([
+          {
+            "type": "text",
+            "text": "สอบถามเกี่ยวกับผลิตภัณฑ์"
+          }
+        ])
+        alert("ขอบคุณที่สนใจผลิตภัณฑ์ของเรา เจ้าหน้าที่จะรีบติดต่อกลับไปอย่างเร็วที่สุดค่ะ")
+      }
+    }
+    
+    async function sendMsgAgent() {
+      if (liff.getContext().type !== "none") {
+      await liff.sendMessages([
+          {
+            "type": "text",
+            "text": "ติดต่อเจ้าหน้าที่"
+          }
+        ])
+        alert("เจ้าหน้าที่จะรีบติดต่อกลับไปอย่างเร็วที่สุดค่ะ")
+      }
+    }
+    
+    function closed() {
+      liff.closeWindow()
+    }
+
     async function getUserProfile() {
       const profile = await liff.getProfile()
       document.getElementById("pictureUrl").src = profile.pictureUrl
