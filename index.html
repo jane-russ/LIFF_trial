@@ -26,21 +26,6 @@
 
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script>
-    function createUniversalLink() {
-    }
-
-    async function shareMsg() {
-    }
-
-    function logOut() {
-    }
-
-    function closed() {
-      liff.closeWindow()
-    }
-
-    async function scanCode() {
-    }
 
     function openWindow() {
       liff.openWindow({
@@ -48,13 +33,22 @@
       external: true
       })
     }
-
-    async function getFriendship() {
+    
+    async function sendMsgProd() {
+      if (liff.getContext().type !== "none") {
+      await liff.sendMessages([
+          {
+            "type": "text",
+            "text": "สอบถามเกี่ยวกับผลิตภัณฑ์"
+          }
+        ])
+        alert("ขอบคุณที่สนใจผลิตภัณฑ์ของเรา เจ้าหน้าที่จะรีบติดต่อกลับไปอย่างเร็วที่สุดค่ะ")
+      }
     }
-
+    
     async function sendMsgAgent() {
       if (liff.getContext().type !== "none") {
-        await liff.sendMessages([
+      await liff.sendMessages([
           {
             "type": "text",
             "text": "ติดต่อเจ้าหน้าที่"
@@ -64,19 +58,8 @@
       }
     }
     
-        async function sendMsgProd() {
-      if (liff.getContext().type !== "none") {
-        await liff.sendMessages([
-          {
-            "type": "text",
-            "text": "สอบถามเกี่ยวกับผลิตภัณฑ์"
-          }
-        ])
-        alert("ขอบคุณที่สนใจผลิตภัณฑ์ของเรา เจ้าหน้าที่จะรีบติดต่อกลับไปอย่างเร็วที่สุดค่ะ")
-      }
-    }
-
-    function getContext() {
+    function closed() {
+      liff.closeWindow()
     }
 
     async function getUserProfile() {
@@ -88,18 +71,12 @@
       document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
     }
 
-    function getEnvironment() {
-    }
-
     async function main() {
       await liff.init({ liffId:"1657220874-OGNZv0o7" })
-      // getEnvironment()
       getUserProfile()
-      // getContext()
-      // getFriendship()
-      // createUniversalLink()
     }
     main()
+    
   </script>
 </body>
 </html>
